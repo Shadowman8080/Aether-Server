@@ -3,7 +3,8 @@
 #
 # Creates a fresh GPT disk (BIOS boot + EFI System Partition + ext4 root that
 # fills the disk), copies the server rootfs onto it, installs GRUB for BIOS and
-# UEFI, writes the fstab and GRUB menu, and exports the result as a VMware disk.
+# UEFI, writes the fstab, the server identity (hostname / os-release) and the
+# GRUB menu, resets the machine identity, and exports the result as a VMware disk.
 #
 # Usage:
 #   build-server-vmdk.sh --root /path/to/server-rootfs --out /path/to/aether-server.vmdk [--size 16G]
@@ -115,6 +116,22 @@ if [ "\$grub_platform" = efi ]; then
     menuentry 'UEFI firmware settings' { fwsetup }
 fi
 EOF
+
+echo "==> server identity"
+printf 'aether-server\n' >"$ROOT/etc/hostname"
+if [ -f "$ROOT/etc/hosts" ]; then
+    sed -i '/^127\.0\.1\.1/d' "$ROOT/etc/hosts"
+fi
+printf '127.0.1.1 aether-server\n' >>"$ROOT/etc/hosts"
+cat >"$ROOT/etc/os-release" <<'EOF'
+NAME="Aether Server"
+PRETTY_NAME="Aether Server 0.1 Development"
+ID=aether
+VERSION="0.1"
+VERSION_ID="0.1"
+LOGO=aether-logo
+EOF
+printf 'Aether Server 0.1 Development \\n \\l\n' >"$ROOT/etc/issue"
 
 echo "==> configuring the administrator account"
 # Set the hash directly in /etc/shadow: chpasswd runs the target's PAM stack,
