@@ -1,0 +1,104 @@
+# Aether Server - never commit build products, images, or secrets.
+
+# Disk images and installers - huge, and Releases handles them.
+*.iso
+*.vmdk
+*.vdi
+*.qcow2
+*.raw
+*.img
+*.ova
+*.ovf
+*.vmx
+*.vhd
+*.vhdx
+
+# ------------------------------------------------------------------ secrets
+*.pem
+*.key
+*.asc
+*.gpg
+*.kdbx
+*.ppk
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*known_hosts*
+*known_hosts.*
+*credential*
+*credentials*
+*secret*
+*secrets*
+*token*
+*.p12
+*.pfx
+*.jks
+secrets.json
+secrets.yaml
+secrets.yml
+.netrc
+.env
+.env.*
+*.env
+
+# ------------------------------------------------------------------- python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ------------------------------------------------------------- build output
+/validation/
+/staging/
+/out/
+/output/
+/outputs/
+/release-*/
+/scratch/
+*.o
+*.a
+*.so.*
+/*.d
+
+# ------------------------------------------------------------------- media
+*.tar
+*.tar.*
+*.tgz
+*.zst
+*.zip
+*.7z
+*.rar
+*.bz2
+*.xz
+*.log
+
+# The server's real systemd units and assets ship under a lib/ directory.
+# A bare "lib/" (a Python setuptools artefact rule) would silently drop them,
+# so this negation is anchored to the known source path.
+!/src/server/assets/usr/lib/
+
+# ------------------------------------------------------------------- editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.\#*
+\#*\#
+
+# --------------------------------------------------------------------- OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ------------------------------------------------------------------ local VM
+*.nvram
+vmware.log

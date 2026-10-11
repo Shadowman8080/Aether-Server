@@ -1,0 +1,31 @@
+# Keep every text file checked out with LF in the working tree so the image
+# build works from a Windows checkout as well as a Linux one. Git still stores
+# LF in the repository, so blobs are identical regardless of platform.
+* text=auto eol=lf
+
+# Scripts that ship into the image must stay LF even if a tool guesses otherwise.
+*.sh   text eol=lf
+*.py   text eol=lf
+*.json text eol=lf
+*.cpp  text eol=lf
+*.h    text eol=lf
+*.conf text eol=lf
+*.service text eol=lf
+*.policy  text eol=lf
+*.desktop text eol=lf
+*.cfg  text eol=lf
+
+# The extensionless launchers and live scripts are shell/Python and MUST be LF.
+/build/server/live/live-init      text eol=lf
+/build/server/live/live-shutdown  text eol=lf
+/src/server/backend/aether-server-install  text eol=lf
+/src/server/installer/aether-server-setup  text eol=lf
+/src/server/installer/aether-directory     text eol=lf
+/src/server/assets/usr/libexec/aether-server-firstboot  text eol=lf
+
+# Never try to normalise real binaries.
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.gz   binary
+*.xz   binary
