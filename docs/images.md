@@ -8,7 +8,7 @@ labelled as such.
 | Image | Virtual size | SHA-256 |
 | --- | --- | --- |
 | `aether-server-0.1-x86_64.iso` | ~1.8 GiB (ISO) | `eb4b5e3d98b6833eec9703728c8c280fa6363b62e980e272bcc5bf8794318cbe` |
-| `aether-server-0.1-x86_64.vmdk` | 16 GiB virtual / ~6 GiB on disk | `323cce9fb9d9a747eb1457264c20ba1446d1713f6e2c476defa49858fef30fc6` |
+| `aether-server-0.1-x86_64.vmdk` | 16 GiB virtual / ~6 GiB on disk | `1c4d93f0a2bead4bf6eb44279d65a6ad55fde1735b8ffbd3796ef35b650d5272` |
 
 ## How they were produced
 
